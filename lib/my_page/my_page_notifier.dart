@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:simple_weight_management/components/popups/weight_edit_pop_up_dart.dart';
+import 'package:simple_weight_management/components/popups/weight_register_pop_up.dart';
 import 'package:state_notifier/state_notifier.dart';
-import 'package:simple_weight_management/components/weight_register_pop_up.dart';
 part 'my_page_notifier.freezed.dart';
 
 @freezed
@@ -42,7 +43,24 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
     showDialog(
       context: context,
       builder: (context) {
-        return WeightRegisterPopUp(_saveWeight, _saveComment, _register);
+        return WeightRegisterPopUp(
+          _saveWeight,
+          _saveComment,
+          _register,
+        );
+      },
+    );
+  }
+
+  void popUpEditForm() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return EditRegisterPopUp(
+          _saveWeight,
+          _saveComment,
+          _register,
+        );
       },
     );
   }
@@ -70,4 +88,7 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
     print(state.record);
     Navigator.pop(context);
   }
+
+  void _delete() {}
+  void _edit() {}
 }

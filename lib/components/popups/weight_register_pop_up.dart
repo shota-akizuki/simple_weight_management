@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:simple_weight_management/components/buttons/register_button.dart';
 
 class WeightRegisterPopUp extends StatelessWidget {
   const WeightRegisterPopUp(
-      this.saveWeight, this.saveComment, this.registerOnTap);
+    this.saveWeight,
+    this.saveComment,
+    this.registerOnTap,
+  );
 
   final Function saveWeight;
   final Function saveComment;
@@ -56,20 +60,7 @@ class WeightRegisterPopUp extends StatelessWidget {
             keyboardType: TextInputType.text,
           ),
         ),
-        SimpleDialogOption(
-          onPressed: () => Navigator.pop(context),
-          child: RaisedButton(
-            child: Text(
-              "登録",
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.blue,
-            shape: StadiumBorder(),
-            onPressed: () {
-              registerOnTap();
-            },
-          ),
-        ),
+        RegisterButton(registerOnTap: registerOnTap),
       ],
     );
   }
